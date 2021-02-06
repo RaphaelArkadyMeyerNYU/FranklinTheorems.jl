@@ -1,13 +1,21 @@
 module FranklinTheorems
 
 import Franklin
-export config_path, lx_fakebiblabel, lx_newcounter, lx_stepcounter, lx_arabic
+export lx_fakebiblabel, lx_newcounter, lx_stepcounter, lx_arabic
 
 """
 Returns a path to FranklinTheorem's markdown file, full of LaTeX-style definitions.
 """
 function config_path()
     return normpath(joinpath(@__FILE__, "..", "FranklinTheorems.md"))
+end
+
+
+"""
+Returns a path to FranklinTheorem's default CSS file. Copy this file to the Franklin `\\_css\\` directory.
+"""
+function css_path()
+    return normpath(joinpath(@__FILE__, "..", "FranklinTheorems.css"))
 end
 
 
