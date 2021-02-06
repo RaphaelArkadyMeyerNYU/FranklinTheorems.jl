@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+/*
+ This CSS file is largely borrow from the SymbolicUtils.jl API documentation
+   at https://juliasymbolics.github.io/SymbolicUtils.jl/api/
+   and https://juliasymbolics.github.io/SymbolicUtils.jl/css/custom.css 
+*/
+
+.theorem{
+    border:1px solid #f1f1f1;
+    padding:1em;
+    /*margin-bottom:2em*/
+}
+.franklin-content .theorem h2.theorem-header{
+    font-size:1.25em;
+    color:#008080;
+    margin:16px 0
+}
+.franklin-content .theorem h1{
+    font-size:1.2em
+}
+.franklin-content .theorem h2{
+    font-size:1em
+}
+.theorem .theorem-type{
+    font-size:1em;
+    color:#6B8E2350;
+    float:right
+}
+
+/* End of borrowed content. */
+
+.franklin-content .proof-box {
+  padding-left: 10px;
+  margin-top: 0px;
+  margin-bottom: 0em;
+  border-left: 2px solid #808080b8;
+}
+
+/* CSS below is influenced by
+ * https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_animate1 
+ * and https://www.w3schools.com/howto/howto_js_accordion.asp */
+
+/* Style the buttons that are used to open and close the accordion panel */
+.franklin-content .theorem-accordion {
+  background-color: #f1f1f1;
+  cursor: pointer;
+  padding-left: 18px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  font: inherit;
+  transition: 0.3s;
+  margin-bottom: 0em;
+}
+
+.franklin-content .theorem-accordion-text {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.franklin-content .theorem-accordion-text:after {
+  content: '▼';
+  position: absolute;
+  opacity: 0;
+  top: -20px;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.franklin-content .theorem-accordion:hover .theorem-accordion-text {
+  padding-right: 25px;
+  padding-top: -25px;
+}
+
+.franklin-content .theorem-accordion:hover .theorem-accordion-text:after {
+  opacity: 1;
+  right: 0;
+  top: 0;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.franklin-content .theorem-accordion:hover {
+  background-color: #d8d5d5;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.franklin-content .theorem-panel {
+  padding: 0 0.5em;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+}
+
+/* End of borrowed content */
+
+.theorem-accordion-text a:link {
+  text-decoration: none;
+  background: -webkit-linear-gradient(#f1f1f1, #f1f1f1), -webkit-linear-gradient(#f1f1f1, #f1f1f1), -webkit-linear-gradient(#333, #333);
+  background: linear-gradient(#f1f1f1, #f1f1f1), linear-gradient(#f1f1f1, #f1f1f1), linear-gradient(#333, #333);
+  -webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+  -moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+  background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  text-shadow: 0.03em 0 #f1f1f1, -0.03em 0 #f1f1f1, 0 0.03em #f1f1f1, 0 -0.03em #f1f1f1, 0.06em 0 #f1f1f1, -0.06em 0 #f1f1f1, 0.09em 0 #f1f1f1, -0.09em 0 #f1f1f1, 0.12em 0 #f1f1f1, -0.12em 0 #f1f1f1, 0.15em 0 #f1f1f1, -0.15em 0 #f1f1f1;
+  background-position: 0% 93%, 100% 93%, 0% 93%;
+  transition: 0.5s;
+}
+
+.theorem-accordion:hover .theorem-accordion-text a:link {
+  text-decoration: none;
+  background: -webkit-linear-gradient(#d8d5d5, #d8d5d5), -webkit-linear-gradient(#d8d5d5, #d8d5d5), -webkit-linear-gradient(#333, #333);
+  background: linear-gradient(#d8d5d5, #d8d5d5), linear-gradient(#d8d5d5, #d8d5d5), linear-gradient(#333, #333);
+  -webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+  -moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+  background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  text-shadow: 0.03em 0 #d8d5d5, -0.03em 0 #d8d5d5, 0 0.03em #d8d5d5, 0 -0.03em #d8d5d5, 0.06em 0 #d8d5d5, -0.06em 0 #d8d5d5, 0.09em 0 #d8d5d5, -0.09em 0 #d8d5d5, 0.12em 0 #d8d5d5, -0.12em 0 #d8d5d5, 0.15em 0 #d8d5d5, -0.15em 0 #d8d5d5;
+  background-position: 0% 93%, 100% 93%, 0% 93%;
+  transition: 0.5s;
+}
