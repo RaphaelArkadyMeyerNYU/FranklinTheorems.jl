@@ -5,6 +5,7 @@ Theorems Environment for [Franklin.jl](https://franklinjl.org/), using syntax re
 
 This is a plugin for Franklin.
 In order to install it, `add FranklinTheorems` in the Julia package manager.
+**ACTUALLY, the plugin is not available from the package manager yet....**
 
 To enable the plugin, add the following lines to the `utils.jl` file:
 ```julia
