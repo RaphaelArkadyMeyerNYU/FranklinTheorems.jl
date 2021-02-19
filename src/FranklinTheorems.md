@@ -17,35 +17,6 @@
 	}
 }
 
-\newcommand{\theoremref}[1]{\cite{!#1}}
-\newcommand{\lemmaref}[1]{\cite{!#1}}
-\newcommand{\definitionref}[1]{\cite{!#1}}
-
-
-\newenvironment{theorem}[2]{
-	\stepcounter{NumTheorems}
-	\begin{thmBlock}{Theorem \arabic{NumTheorems}}{#1}{Theorem}{ \fakebiblabel{!#2 @ Theorem \arabic{NumTheorems}} }
-}{
-	\end{thmBlock}
-}
-
-
-\newenvironment{definition}[2]{
-	\stepcounter{NumDefinitions}
-	\begin{thmBlock}{Definition \arabic{NumDefinitions}}{#1}{Definition}{\fakebiblabel{!#2 @ Definition \arabic{NumDefinitions}}}
-}{
-	\end{thmBlock}
-}
-
-
-\newenvironment{lemma}[2]{
-	\stepcounter{NumLemmas}
-	\begin{thmBlock}{Lemma \arabic{NumLemmas}}{#1}{Lemma}{\fakebiblabel{!#2 @ Lemma \arabic{NumLemmas}}}
-}{
-	\end{thmBlock}
-}
-
-
 \newenvironment{dropdown}[1]{
 	\franklinhtml{<button class="theorem-accordion"><div class="theorem-accordion-text">}
 	#1
@@ -65,14 +36,6 @@
 	\end{right}
 	@@
 }
-
-
-\newcommand{\enabletheorems}{
-	\newcounter{NumTheorems}
-	\newcounter{NumDefinitions}
-	\newcounter{NumLemmas}
-}
-
 
 \newcommand{\theoremscripts}{
 ~~~

@@ -16,8 +16,6 @@ using FranklinTheorems
 Franklin.include_external_config(FranklinTheorems.config_path()) 
 ```
 
-**This requires using a very new version of Franklin.jl, which is not yet on the master branch.**
-
 Additionally, FranklinTheorems also creates the `.theorem`, `.theorem-header`, `.theorem-type`, `.theorem-accordion`, `.theorem-panel`, `.theorem-accordion-text`, and `.proof-box` div environments. We provide a [CSS file](/src/FranklinTheorems.css) for the tufte Franklin style.
 After installing the package, the following Julia code will return the path to a local copy of the CSS file:
 ```julia
@@ -48,6 +46,16 @@ You can similarly use `\begin{theorem}...\end{theorem}` and `\begin{lemma}...\en
 Further, if the optional parameter `label-name` is given, then you can run `\definitionref{label-name}` to create a link to the definition.
 You can similarly run `\theoremref{...}` and `\lemmaref{...}`.
 The label-name parameter can also be left empty if you do not want to refer to it elsewhere.
+
+#### Custom Theorem Blocks
+
+Suppose you want to use blocks other than `theorem`, `lemma`, and `definition`.
+Then, in `utils.jl`, you can specify additional blocks you want to use.
+For example, suppose you want to provide some corollaries. Then, you would write:
+```latex
+Franklin.include_external_config(FranklinTheorems.config_path(['corollary'])) 
+```
+Which would then export the `corollary` environment and `corollaryref` command, in addition to the standard `theorem`, `lemma`, and `definition` commands and environments.
 
 #### Proofs
 

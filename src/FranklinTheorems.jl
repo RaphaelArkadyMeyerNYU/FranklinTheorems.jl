@@ -3,20 +3,70 @@ module FranklinTheorems
 import Franklin
 export lx_fakebiblabel, lx_newcounter, lx_stepcounter, lx_arabic
 
-"""
-Returns a path to FranklinTheorem's markdown file, full of LaTeX-style definitions.
-"""
-function config_path()
-    return normpath(joinpath(@__FILE__, "..", "FranklinTheorems.md"))
+
+module ExportConfigPath
+
+	export css_path, config_path
+
+	"""
+	Returns a path to FranklinTheorem's default CSS file. Copy this file to the Franklin `\\_css\\` directory.
+	"""
+	function css_path()
+		return normpath(joinpath(@__FILE__, "..", "FranklinTheorems.css"))
+	end
+
+	"""
+	Returns a path to FranklinTheorem's markdown file, full of LaTeX-style definitions.
+	By default, the theorem, lemma, and definition blocks are defined.
+	If a list of strings is given, then the associated counters and environments are created.
+	Since this is dynamic, because of the optional parameters, this returns a path to a tempfile.
+	"""
+	function config_path()
+		config_path([])
+	end
+	function config_path(theorem_class_names)
+		all_class_names = [["theorem", "lemma", "definition"]; theorem_class_names]
+		baseMarkdownText = read(normpath(joinpath(@__FILE__, "..", "FranklinTheorems.md")), String)
+
+		f = tempname()
+		write(f, baseMarkdownText * "\n" * make_custom_environments(all_class_names))
+		return f
+	end
+
+	"""
+	Returns a path to a temporary file that includes Franklin-Markdown code for a custom amstheorem-style environment.
+	"""
+	function make_custom_environments(theorem_class_names)
+		
+		env_string = ""
+		enable_string = "\\newcommand{\\enabletheorems}{"
+
+		for i=1:length(theorem_class_names)
+			defn_name = theorem_class_names[i]
+			defn_titlecase = titlecase(defn_name)
+			defn_body = """
+\\newcommand{\\$(defn_name)ref}[1]{\\cite{!#1}}
+
+\\newenvironment{$(defn_name)}[2]{
+	\\stepcounter{Num$(defn_name)}
+	\\begin{thmBlock}{$(defn_titlecase) \\arabic{Num$(defn_name)}}{#1}{$(defn_titlecase)}{ \\fakebiblabel{!#2 @ $(defn_titlecase) \\arabic{Num$(defn_name)}} }
+}{
+	\\end{thmBlock}
+}
+			"""
+			env_string = env_string * "\n" * defn_body
+			enable_string = enable_string * "\n" * "\\newcounter{Num$(defn_name)}"
+		end
+
+		enable_string = enable_string * "\n}"
+
+		return env_string * "\n" * enable_string
+	end
+
 end
 
+using .ExportConfigPath
 
-"""
-Returns a path to FranklinTheorem's default CSS file. Copy this file to the Franklin `\\_css\\` directory.
-"""
-function css_path()
-    return normpath(joinpath(@__FILE__, "..", "FranklinTheorems.css"))
-end
 
 
 """
