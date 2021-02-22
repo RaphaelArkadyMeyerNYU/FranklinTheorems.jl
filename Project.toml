@@ -1,7 +1,7 @@
 name = "FranklinTheorems"
 uuid = "f9b7297b-b8b9-4883-a559-829bcd556a2f"
 authors = ["RaphaelArkadyMeyerNYU <59720359+RaphaelArkadyMeyerNYU@users.noreply.github.com>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 Franklin = "713c75ef-9fc9-4b05-94a9-213340da978e"
