@@ -90,7 +90,7 @@ function lx_fakebiblabel(lxc, _)
 	nvars = length(args)
 
 	if nvars < 2
-		error("Bad fakebiblabel input: Less than 2 inputs were given. Input was:\n\\fakebiblablel{" * join(args, " ") * "}")
+		error("Bad fakebiblabel input: Less than 2 inputs were given. Input was:\n\\fakebiblabel{" * join(args, " ") * "}")
 	end
 
 	if args[1] == "@"
@@ -101,7 +101,7 @@ function lx_fakebiblabel(lxc, _)
 		Franklin.fd2html("\\biblabel{" * ref_name * "}{" * legible_name * "}", internal=true)
 		return ref_name
 	else
-		error("Bad fakebiblabel input: @ was not the second input. Input was:\n\\fakebiblablel{" * join(args, " ") * "}")
+		error("Bad fakebiblabel input: @ was not the second input. Input was:\n\\fakebiblabel{" * join(args, " ") * "}")
 	end
 end
 
